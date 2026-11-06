@@ -36,5 +36,5 @@ urlpatterns = [
             name="token_refresh"
         ),
 
-        path("api/auth/", include('users.urls')),
+        path("api/auth/", include('apps.users.urls')),
 ]
