@@ -51,9 +51,28 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 class GetUserSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = User
-        fields = '__all__'
+        fields = [
+            "id",
+            "username",
+            "email",
+            "first_name",
+            "last_name",
+            "date_joined",
+        ]
+        read_only_fields = fields
+
+class UpdateUserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = [
+            "first_name",
+            "last_name",
+            "email",
+        ]
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -83,3 +102,15 @@ class UserProfileSerializer(serializers.ModelSerializer):
                 )
                 
         return attrs
+
+class UpdateUserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+            model = UserProfile
+            fields = [
+                "phone",
+                "address",
+                "city",
+                "state",
+                "pincode",
+            ]
+            read_only_fields = ["id"]
